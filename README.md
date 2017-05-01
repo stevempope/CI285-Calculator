@@ -23,6 +23,11 @@ Sub(X,Y) = X - Y
 Because I have chosen a bounded data type, the natural restrictions of the type will prevent insertion of any unusual or invalid data. The input for values X and Y must be whole numbers within the bounds of the type Int.
 
 
+3.	Mul: Multiplication is the next function I have chosen to implement in my calendar API. As in the previous two functions, this will be a basic function, where two values X and Y are submitted via a form and the result is delivered in either HTML or JSON. A consideration with these functions is possibility of entering a negative value in the form. As the values must be of type Int, there will not need to be any extra lines of code to handle such conditions.
+
+Mul:: Int -> Int -> Int
+Mul (X,Y) =  X*Y
+
 # Implementation of API
 
 # Reflection on Code
