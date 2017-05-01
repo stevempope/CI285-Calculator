@@ -21,4 +21,16 @@ getHomeR = defaultLayout $ do
             <a href=@{MulR 5 8}> HTML multiplication
         <p>
             <a href=@{MulR 5 8}?_accept=application/json>JSON multiplication
+		<p>
+			<a href=@{DivR 5 8}> HTML Division
+        <p>
+            <a href=@{DivR 5 8}?_accept=application/json>JSON Division
+		<p>
+			<a href=@{DivR 5 0}> HTML Division by 0
+        <p>
+            <a href=@{DivR 5 0}?_accept=application/json>JSON Division by 0
+		<p>
+			<a href=@{DivR 0 8}> HTML 0 Divide by INT
+        <p>
+            <a href=@{DivR 0 8}?_accept=application/json>JSON 0 Divide by INT
     |]

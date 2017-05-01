@@ -12,6 +12,7 @@ executable          HaskellLab
                     Add
                     Sub
                     Mul
+					Div
                     Home
 
   ghc-options:      -Wall -fwarn-tabs -O2
