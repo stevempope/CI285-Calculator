@@ -28,6 +28,15 @@ Because I have chosen a bounded data type, the natural restrictions of the type 
 Mul:: Int -> Int -> Int
 Mul (X,Y) =  X*Y
 
+4.	Div: Divide is a more complex operation to handle compared to the other three “basic” functions of the calculator. Dividing by zero cannot be allowed, also the use of Int as a data type can lead to loss of precision. Dividing two Integers often leads to a number that is not whole. I have decided to restrict the data type of the input values, but to maintain precision of the result.
+
+Div: Int -> Int -> Double
+Div (X,0) = Nothing
+Div (X,Y) = X / Y
+
+I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki.haskell.org/Performance/Floating_point). This will allow me to return a precise decimal answer to the division of two Integers.
+
+
 # Implementation of API
 
 # Reflection on Code
