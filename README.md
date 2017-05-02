@@ -1,6 +1,27 @@
 # CI285-Calculator
 Implementation of a RESTful API for Assignment 2 - CI285 Introduction to Functional Programming
 
+# Building the Environment
+To run this Haskell application, you need to have installed the Haskell Platform  (https://www.haskell.org/platform/)
+This includes:
+GHC (Glasgow Haskell Compiler)
+The Cabal Tool
+The Stack Tool
+
+You will also need to install the Yesod Web Framework
+Instructions for installing the framework can be found at http://www.yesodweb.com/page/quickstart
+
+Once the build environment is installed, you need to download this master branch and navigate to the folder in the GHC window.
+Navigation of folders is completed by using the ls command to list the folders and files in your directory, and navigating down to the next level by using the command cd %foldername%
+If you navigate to an incorrect folder, you can return up to the level above using the commmand cd..
+To find out the name of the folder you are currently in, use pwd
+
+Once you have navigated to the folder you have stored the project in, ensure that the program has been correctly compiled by running the stack build command
+
+Once complete, execute stack exec %foldername% to intialise the Yesod Framework web server. The server will now be accessible using the link http://localhost:3000
+
+HTTP is not considered a safe web protocol. This web server should not be deployed on a public facing server for any reason. It is simply to satisfy the requirements of the CI285 Coursework on a local machine.
+
 # Design of Calculator API
 
 # Design
