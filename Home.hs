@@ -21,9 +21,12 @@ getHomeR = defaultLayout $ do
             <a href=@{MulR 5 8}> HTML multiplication
         <p>
             <a href=@{MulR 5 8}?_accept=application/json>JSON multiplication
-        <form>
-            Value X <input type = "number" id = "x"/>
-            Value Y <input type = "number" id = "y"/>
-            Calculate! <input type = "Submit" value = "Submit"/>
-       <select id="functions">
+        <p>
+            <a href=@{DivR 8 2}> HTML division
+        <p>
+            <a href=@{DivR 8 2}?_accept=application/json>JSON division
+        <form action="http://localhost:3000/add/" method=get>
+            Value X <input type = "number" name = "x"/>
+            Value Y <input type = "number" name = "y"/>
+            Calculate! <input type = "Submit" value = "Add"/>
     |]
