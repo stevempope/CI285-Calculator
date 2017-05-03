@@ -11,7 +11,7 @@ import Yesod.Core
 import Add
 import Sub
 import Mul
-import Div
+{-import Div-}
 import Home
 
 mkYesodDispatch "App" resourcesApp
