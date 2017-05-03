@@ -4,8 +4,11 @@ Implementation of a RESTful API for Assignment 2 - CI285 Introduction to Functio
 # Building the Environment
 To run this Haskell application, you need to have installed the Haskell Platform  (https://www.haskell.org/platform/)
 This includes:
+
 GHC (Glasgow Haskell Compiler)
+
 The Cabal Tool
+
 The Stack Tool
 
 You will also need to install the Yesod Web Framework
