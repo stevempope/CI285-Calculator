@@ -42,22 +42,27 @@ getHomeR = do
     defaultLayout $ do
     setTitle "15836791 Calculator"
     [whamlet|
+        <h1> Basic Addition
         <p>
             <a href=@{AddR 5 7}>HTML addition
         <p>
             <a href=@{AddR 5 7}?_accept=application/json>JSON addition
+        <h1> Basic Subtraction
         <p>
             <a href=@{SubR 3 9}> HTML subtraction
         <p>
             <a href=@{SubR 3 9}?_accept=application/json>JSON subtraction
+        <h1> Basic Multiplication
         <p>
             <a href=@{MulR 5 8}> HTML multiplication
         <p>
             <a href=@{MulR 5 8}?_accept=application/json>JSON multiplication
+        <h1> Basic Division
         <p>
             <a href=@{DivR 8 2}> HTML division
         <p>
             <a href=@{DivR 8 2}?_accept=application/json>JSON division
+        <h1> Form Addition
         
         <form method=post action=@{AddAdvR} enctype=#{addY}>
             ^{addX}

@@ -1,4 +1,3 @@
-
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 module Add where
@@ -21,10 +20,12 @@ postAddAdvR :: Handler Html
 postAddAdvR = do
      ((addRes,_),_) <- runFormPost renderAdd
      case addRes of
-       FormSuccess add -> do
+       FormSuccess (Add x op y) -> do
           defaultLayout $ do
-            [whamlet| 
-              #{show add}
+            [whamlet|
+                #{show x} #{op} #{y} = #{z} 
             |]
+        where
+          z = x + y
        _ -> undefined
          
