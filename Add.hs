@@ -24,7 +24,7 @@ postAddAdvR = do
        FormSuccess add -> do
           defaultLayout $ do
             [whamlet| 
-             Success
+              #{show add}
             |]
        _ -> undefined
          
