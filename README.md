@@ -59,6 +59,16 @@ I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki
 
 
 # Implementation of API
+Using the Calculator:
+Basic Functions:
+
+The top section of the page is devoted to the basic function of my API. To use the API, select either the HTML or JSON implementation of a function. A placeholder set of data will be input for you.
+
+To change the value of the numbers used in the calculation, change the URL in the address bar of your browser as the below example:
+
+http://localhost:3000/%operator%/%value%/%value%
+
+Where %value% is any whole number (Integer) less than (2^29)-1 and (-2^29) and %operator is any of the standard four operators (add, sub, mul, div)
 
 # Reflection on Code and Project
 I have struggled with this project. The concepts of the Yesod Web Framework are easy to get started with, but extremely difficult to add to. A large proportion of the problem with this has been in my areas of research, as I have mentioned above. Documentation that is clear and easy to understand is sparse in this context. I have struggled to add to the project due to several technical as well as research difficulties. At the beginning of the assignment period, there was an issue with the university environment that ultimately meant that there was not enough space in our user areas to run a Yesod Web Server. This issue is, to date, unresolved. This has meant that I have had to explore methods of editing Haskell files on a laptop. Although this is the advised method, I struggled to get the Haskell Platform working in a way that satisfied my needs. I dual booted the recommended Fedora OS and found that it's incompatibility with the modern UEFI standard meant that I had twice had to reinstall Fedora in order to update it. I resolved to install Fedora in a virtual machine to mitigate the frequent issues I had, but in taking the time to solve these issues, much time was wasted fighting the technical problems over expanding my understanding of the problem.
