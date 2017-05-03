@@ -19,5 +19,7 @@ executable          HaskellLab
 
   build-depends:  base
                 , yesod-core
+                , yesod-form
+                , text
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N

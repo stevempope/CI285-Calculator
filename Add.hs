@@ -1,9 +1,12 @@
+
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 module Add where
 
 import Foundation
 import Yesod.Core
+import Yesod.Form
+import Home
 
 getAddR :: Int -> Int -> Handler TypedContent
 getAddR x y = selectRep $ do
@@ -13,3 +16,15 @@ getAddR x y = selectRep $ do
     provideJson $ object ["result" .= z]
   where
     z = x + y
+
+postAddAdvR :: Handler Html
+postAddAdvR = do
+     ((addRes,_),_) <- runFormPost renderAdd
+     case addRes of
+       FormSuccess add -> do
+          defaultLayout $ do
+            [whamlet| 
+             Success
+            |]
+       _ -> undefined
+         
