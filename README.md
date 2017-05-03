@@ -60,6 +60,7 @@ I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki
 
 # Implementation of API
 Using the Calculator:
+
 Basic Functions:
 
 The top section of the page is devoted to the basic function of my API. To use the API, select either the HTML or JSON implementation of a function. A placeholder set of data will be input for you.
