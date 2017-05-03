@@ -15,8 +15,14 @@ You will also need to install the Yesod Web Framework
 Instructions for installing the framework can be found at http://www.yesodweb.com/page/quickstart
 
 Once the build environment is installed, you need to download this master branch and navigate to the folder in the GHC window.
-Navigation of folders is completed by using the ls command to list the folders and files in your directory, and navigating down to the next level by using the command cd %foldername%
-If you navigate to an incorrect folder, you can return up to the level above using the commmand cd..
+Navigation of folders is completed by using the ls command to list the folders and files in your directory, and navigating down to the next level by using the command 
+
+cd %foldername%
+
+If you navigate to an incorrect folder, you can return up to the level above using the commmand 
+
+cd..
+
 To find out the name of the folder you are currently in, use pwd
 
 Once you have navigated to the folder you have stored the project in, ensure that the program has been correctly compiled by running the stack build command
@@ -60,6 +66,8 @@ Div (X,Y) = X / Y
 
 I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki.haskell.org/Performance/Floating_point). This will allow me to return a precise decimal answer to the division of two Integers.
 
+The structure of the calculator will take the form of links to show examples of the API working. I plan to provide two links per function added on an HTML webpage, each providing an HTML and a JSON representation of the same calculation.
+
 
 # Implementation of API
 Using the Calculator:
@@ -75,10 +83,13 @@ http://localhost:3000/%operator%/%value%/%value%
 Where %value% is any whole number (Integer) less than (2^29)-1 and (-2^29) and %operator is any of the standard four operators (add, sub, mul, div)
 
 # Reflection on Code and Project
-I have struggled with this project. The concepts of the Yesod Web Framework are easy to get started with, but extremely difficult to add to. A large proportion of the problem with this has been in my areas of research, as I have mentioned above. Documentation that is clear and easy to understand is sparse in this context. I have struggled to add to the project due to several technical as well as research difficulties. At the beginning of the assignment period, there was an issue with the university environment that ultimately meant that there was not enough space in our user areas to run a Yesod Web Server. This issue is, to date, unresolved. This has meant that I have had to explore methods of editing Haskell files on a laptop. Although this is the advised method, I struggled to get the Haskell Platform working in a way that satisfied my needs. I dual booted the recommended Fedora OS and found that it's incompatibility with the modern UEFI standard meant that I had twice had to reinstall Fedora in order to update it. I resolved to install Fedora in a virtual machine to mitigate the frequent issues I had, but in taking the time to solve these issues, much time was wasted fighting the technical problems over expanding my understanding of the problem.
+I have struggled with this project. The concepts of the Yesod Web Framework are easy to get started with, but extremely difficult to add to. A large proportion of the problem with this has been in my areas of research, as I have mentioned above. In other languages that I have studied during the course, many examples of output from code exist. I have found this not to be the case with Haskell and Yesod. I have struggled to add to the project due to several technical as well as research difficulties. At the beginning of the assignment period, there was an issue with the university environment that ultimately meant that there was not enough space in our user areas to run a Yesod Web Server. This issue is, to date, unresolved.
 
-As a result of the limited media and technical issues, I do not feel that this project reflects my best work. I am not satisfied with the end result, which is a very basic implementation of the calculator. Values for X and Y can be adjusted by modifying the link at the top of the webpage, but my ultimate goal in my design was to use an HTML form to capture the values of X and Y and pass them to my modules. I have been unable to implement a data storage method, and despite my efforts in the test branch, I struggled to make Divide work.
-The issue with Divide was in my choice of operator. The GHC parser initially gave me an error saying there was implementation for Fractional. My study eventually found a diagram that shows the tree of types that can be used for families of numbers. As a Fractional only uses Float and Double types, I updated all the references to divide beyond the scope of my original function to include doubles in place of ints. Further research revealed that I had simply used an incorrect operator. I replaced / which depends on the fractional int type to `div` which is capable of handling Integral numbers.
+Despite the limitation of resources in areas I tend to lean on in other languages, I have found the Yesod book (http://www.yesodweb.com/book) to be particularly useful. Attempts at this coursework have been a useful reminder to not rely on the same locations for information. As a result of these challenges I feel I have a different perspective, becoming a better programmer as a result.
+
+I do still feel ,however, that this project does not reflect my best work. I am not satisfied with the end result, which does not completely match my design. Values for X and Y can be adjusted by modifying the link at the top of the webpage in the basic arithmatic functions, and the API provides a RESTful implementation by serving the result both in JSON and HTML. I have managed to create a form, with help from the Yesod Book Forms article. Although the form works successfully for HTML, I have not been able to provide a JSON implimentation for the API. I have been unable to implement a data storage method.
+
+During the implementation process, I sturggled with many areas. One in particular was implementing divide. The issue with Divide was in my choice of operator. The GHC parser initially gave me an error saying there was implementation for Fractional. My study eventually found a diagram that shows the tree of types that can be used for families of numbers. As a Fractional only uses Float and Double types, I updated all the references to divide beyond the scope of my original function to include doubles in place of ints. Further research revealed that I had simply used an incorrect operator. I replaced / which depends on the fractional int type to `div` which is capable of handling Integral numbers, therefore matching my design document.
 
 Because I chose Int as the basic data type for all my calculations, my Div function lacks precision. The resulting answer is rounded to an Int, meaning a divide of 7 by 6 returns 0. The basic functions are also unable to accept anything other than whole numbers as input. I deliberately limited the first functions I created, so that I could focus on the function of the API.
 
