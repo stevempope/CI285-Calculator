@@ -102,7 +102,10 @@ If I were to extend the functions of my basic functions, handling numbers that c
 # Reflection on Persistent Storage Techniques used
 
 I have not managed to implement a storage method in my API. If I had more time to implement the Persistent module in Yesod (allows the use of SQL Lite as a database engine, as well as use of a YAML file to store data), I would have used the data storage to store the result of data entered into the addition form, with each calculation stored as an individual row in the database. The Database structure would behave as such:
+
 Relation name: AddHistory
 Attributes: AddID (Primary Key), AddX, Operand, AddY
+
 I would add a page that returns the complete history for the calculator. Doing so would allow me to implement a function that passes the values back to the form, like the history feature on a scientific calculator.
+
 Further extension would include the addition of relations that stored user details. This would allow me to add a login/user credential screen. Implementing this would allow me to extend the history feature further by presenting a user’s individual history.
