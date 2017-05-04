@@ -34,24 +34,23 @@ HTTP is not considered a safe web protocol. This web server should not be deploy
 # Design of Calculator API
 
 # Design
+
 Representational State Transfer(REST) is a method of providing resources to a client via HTTP. Different resource types can be delivered depending on the type of device or access that is required. To successfully implement REST into my API, my calculator must be able to deliver both HTML and JSON representations of any function that I decide to implement.
 Calculator Features
+
 1.	Add: Addition is one of the core functions of a calculator. I will provide a function that adds values X and Y. Both with be captured using HTML Forms and Input elements. My basic addition function will only add whole numbers. This means the type of my function will be:
 
 Add:: Int -> Int -> Int
-
 Add(X,Y) = X + Y
 
 By using Int as a data type, I ensure the operation of my API will offer equal functionality across all machines. If I had opted to use Integer as a type instead, Haskell allows the maximum and minimum values to be the limits of an individual machines memory. While this would create a more flexible API that makes maximum use of the server’s resources, there is a chance that the number delivered would be larger than could be handled by the client. This would also mean in a situation where my server API was hosted on a scaled web server, the maximum number that the API could handle would fluctuate. This would complicate testing the API. The brief also states that the function of a calculator is the target, and most calculators also limit themselves to a 32-bit integer, allowing for maximum and minimum values of (22) -1 and -229 respectively.
 
-2.	Sub: Subraction is the logical following addition to the API, after addition. In the same vein, I will allow for two values to be captured from an HTML form. A consideration when implementing subtraction is the possibility of a result returning a negative value. My use of the Int data type will allow for negative values to be handled with the bounds of the Int type, being a number no lower than -229.
+2.	Sub: Subtraction is the logical following addition to the API, after addition. In the same vein, I will allow for two values to be captured from an HTML form. A consideration when implementing subtraction is the possibility of a result returning a negative value. My use of the Int data type will allow for negative values to be handled with the bounds of the Int type, being a number no lower than -229.
 
 Sub:: Int -> Int -> Int
-
 Sub(X,Y) = X - Y
 
-Because I have chosen a bounded data type, the natural restrictions of the type will prevent insertion of any unusual or invalid data. The input for values X and Y must be whole numbers within the bounds of the type Int.
-
+Because I have chosen a bounded data type, the natural restrictions of the type will prevent insertion of any unusual or invalid data. The input for values X and Y must be whole numbers within the bounds of the type Int. 
 
 3.	Mul: Multiplication is the next function I have chosen to implement in my calendar API. As in the previous two functions, this will be a basic function, where two values X and Y are submitted via a form and the result is delivered in either HTML or JSON. A consideration with these functions is possibility of entering a negative value in the form. As the values must be of type Int, there will not need to be any extra lines of code to handle such conditions.
 
@@ -64,35 +63,40 @@ Div: Int -> Int -> Double
 Div (X,0) = Nothing
 Div (X,Y) = X / Y
 
-I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki.haskell.org/Performance/Floating_point). This will allow me to return a precise decimal answer to the division of two Integers.
-
-The structure of the calculator will take the form of links to show examples of the API working. I plan to provide two links per function added on an HTML webpage, each providing an HTML and a JSON representation of the same calculation.
+I have chosen to use Double type at the advice of the Haskell Wiki (https://wiki.haskell.org/Performance/Floating_point) [accessed 1st May 2017]. (This source cannot be considered as a totally reliable source, however. The Haskell wiki is not strongly moderated and contains very low levels of detail in places.) This will allow me to return a precise decimal answer to the division of two Integers. 
 
 
 # Implementation of API
-Using the Calculator:
 
-Basic Functions:
+The top section of the page is devoted to the basic function of my API.
 
-The top section of the page is devoted to the basic function of my API. To use the API, select either the HTML or JSON implementation of a function. A placeholder set of data will be input for you.
-
+To use the API, select either the HTML or JSON implementation of a function. A placeholder set of data will be input for you.
 To change the value of the numbers used in the calculation, change the URL in the address bar of your browser as the below example:
 
 http://localhost:3000/%operator%/%value%/%value%
 
 Where %value% is any whole number (Integer) less than (2^29)-1 and (-2^29) and %operator is any of the standard four operators (add, sub, mul, div)
 
+During the implementation of my design, I have decided the keep Int only input across all of my functions. Therefore, the design for divide has changed. Instead of returning a result of type double, the divide functions type will change to
+
+Div:: Int -> Int -> Int
+
+The return type for all functions in my Yesod implementation return type Handler. This is because the API takes the input from the webpage and returns the result embedded in Html or JSON
+
+
 # Reflection on Code and Project
+
 I have struggled with this project. The concepts of the Yesod Web Framework are easy to get started with, but extremely difficult to add to. A large proportion of the problem with this has been in my areas of research, as I have mentioned above. In other languages that I have studied during the course, many examples of output from code exist. I have found this not to be the case with Haskell and Yesod. I have struggled to add to the project due to several technical as well as research difficulties. At the beginning of the assignment period, there was an issue with the university environment that ultimately meant that there was not enough space in our user areas to run a Yesod Web Server. This issue is, to date, unresolved.
 
 Despite the limitation of resources in areas I tend to lean on in other languages, I have found the Yesod book (http://www.yesodweb.com/book) to be particularly useful. Attempts at this coursework have been a useful reminder to not rely on the same locations for information. As a result of these challenges I feel I have a different perspective, becoming a better programmer as a result.
 
-I do still feel ,however, that this project does not reflect my best work. I am not satisfied with the end result, which does not completely match my design. Values for X and Y can be adjusted by modifying the link at the top of the webpage in the basic arithmatic functions, and the API provides a RESTful implementation by serving the result both in JSON and HTML. I have managed to create a form, with help from the Yesod Book Forms article. Although the form works successfully for HTML, I have not been able to provide a JSON implimentation for the API. I have been unable to implement a data storage method.
+I do still feel, however, that this project does not reflect my best work. I am not satisfied with the result, which does not completely match my design. Values for X and Y can be adjusted by modifying the link at the top of the webpage in the basic arithmetic functions, and the API provides a RESTful implementation by serving the result both in JSON and HTML. I have managed to create a form, with help from the Yesod Book Forms article. Although the form works successfully for HTML, I have not been able to provide a JSON implementation for the API. I have been unable to implement a data storage method.
 
-During the implementation process, I sturggled with many areas. One in particular was implementing divide. The issue with Divide was in my choice of operator. The GHC parser initially gave me an error saying there was implementation for Fractional. My study eventually found a diagram that shows the tree of types that can be used for families of numbers. As a Fractional only uses Float and Double types, I updated all the references to divide beyond the scope of my original function to include doubles in place of ints. Further research revealed that I had simply used an incorrect operator. I replaced / which depends on the fractional int type to `div` which is capable of handling Integral numbers, therefore matching my design document.
+During the implementation process, I struggled with many areas. One was implementing divide. The issue with Divide was in my choice of operator. The GHC parser initially gave me an error saying there was implementation for Fractional. My study eventually found a diagram that shows the tree of types that can be used for families of numbers. As a Fractional only uses Float and Double types, I updated all the references to divide beyond the scope of my original function to include doubles in place of ints. Further research revealed that I had simply used an incorrect operator. I replaced / which depends on the fractional int type to div which is capable of handling Integral numbers, therefore matching my design document.
 
 Because I chose Int as the basic data type for all my calculations, my Div function lacks precision. The resulting answer is rounded to an Int, meaning a divide of 7 by 6 returns 0. The basic functions are also unable to accept anything other than whole numbers as input. I deliberately limited the first functions I created, so that I could focus on the function of the API.
 
 If I were to extend the functions of my basic functions, handling numbers that contain floating points would be an excellent expansion of the function.
+
 
 # Reflection on Persistent Storage Techniques used
