@@ -27,7 +27,7 @@ To find out the name of the folder you are currently in, use pwd
 
 Once you have navigated to the folder you have stored the project in, ensure that the program has been correctly compiled by running the stack build command
 
-Once complete, execute stack exec %foldername% to intialise the Yesod Framework web server. The server will now be accessible using the link http://localhost:3000
+Once complete, execute stack exec HaskellLab to intialise the Yesod Framework web server. The server will now be accessible using the link http://localhost:3000
 
 HTTP is not considered a safe web protocol. This web server should not be deployed on a public facing server for any reason. It is simply to satisfy the requirements of the CI285 Coursework on a local machine.
 
